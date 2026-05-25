@@ -32,7 +32,7 @@ def handle_type(cmd_arg, builtin_cmds):
 def main():
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
-        "type": lambda args:handle_type(args) ,
+        "type": lambda args:handle_type(args,builtin_cmd.keys()) ,
         "echo": lambda args:print(args),
     }
     while True:
