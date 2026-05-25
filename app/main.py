@@ -51,7 +51,7 @@ def main():
             external_path = find_in_path(command)
 
             if external_path:
-                spawn_args = command + args_list
+                spawn_args = [command] + args_list
                 subprocess.run(spawn_args)
             else:
                 print(f"{command}: command not found")
