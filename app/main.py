@@ -19,7 +19,7 @@ def main():
             else:
                 print(f"{part[1]}: not found")
         if first == "echo":
-            argument = "".join(part[1:])
+            argument = " ".join(part[1:])
             print(argument)
             # if first == "type":
             #     if part[1] in commands:
