@@ -13,7 +13,7 @@ def find_in_path(command_path):
             continue
         fullpath = os.path.join(directory,command_path)
 
-        if os.path.isfile(full_path) and os.access(fullpath, os.X_OK):
+        if os.path.isfile(fullpath) and os.access(fullpath, os.X_OK):
             return fullpath
     return None
 
