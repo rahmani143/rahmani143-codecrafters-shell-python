@@ -26,8 +26,8 @@ def main():
             #         print(f"{part[1]} is a shell builtin")
             #     else:
             #         print(f"{part[1]}: not found")
-            # else:
-            #     print(f"{command}: command not found")
+        else:
+            print(f"{command}: command not found")
     pass
 
 
