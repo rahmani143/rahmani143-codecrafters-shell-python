@@ -19,7 +19,8 @@ def main():
             else:
                 print(f"{part[1]}: not found")
         if first == "echo":
-            print(f"{part[1],part[2]}")
+            argument = "".join(part[1:])
+            print(argument)
             # if first == "type":
             #     if part[1] in commands:
             #         print(f"{part[1]} is a shell builtin")
