@@ -16,6 +16,8 @@ def main():
             
             if second in commands:
                 print(f"{second} is a shell builtin")
+            else:
+                print(f"{part[1]}: not found")
             # if first == "type":
             #     if part[1] in commands:
             #         print(f"{part[1]} is a shell builtin")
