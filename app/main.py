@@ -6,7 +6,7 @@ def main():
     while(True):
         sys.stdout.write("$ ")
         command = input()
-        commands = ["echo","exit"]
+        commands = ["echo","exit","type"]
         part = command.split(maxsplit = 1)
         first = part[0]
         if command == "exit":
