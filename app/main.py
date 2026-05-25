@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import os
+import subprocess
 
 def find_in_path(command_path):
     path_env = os.environ.get("PATH", "")
