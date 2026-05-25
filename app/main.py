@@ -37,12 +37,23 @@ def main():
     }
     while True:
         print("$ ",end="")
-        command, *args = input().strip().split()
+        raw_input = input().strip()
+        if not raw_input:
+            continue
+
+        command, *args_list = raw_input.split()
 
         if command in builtin_cmd:
-            builtin_cmd[command](" ".join(args))
+            arguments_string = " ".join(args_list)
+            builtin_cmd[command](arguments_string)
         else:
-            print(f"{command}: command not found")
+            external_path = find_in_path(command)
+
+            if external_path:
+                spawn_args = [external_path] + args_list
+                subprocess.run(spawn_args)
+            else:
+                print(f"{command}: command not found")
 
 
 if __name__ == "__main__":
