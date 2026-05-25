@@ -18,6 +18,8 @@ def main():
                 print(f"{second} is a shell builtin")
             else:
                 print(f"{part[1]}: not found")
+        if first == "echo":
+            print(f"{part[1],part[2]}")
             # if first == "type":
             #     if part[1] in commands:
             #         print(f"{part[1]} is a shell builtin")
