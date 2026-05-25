@@ -6,14 +6,16 @@ def main():
     while(True):
         sys.stdout.write("$ ")
         command = input()
+        if command == "exit":
+            break
         commands = ["echo","exit","type"]
-        part = command.split(maxsplit = 1)
+        part = command.split(maxsplit = 2)
         first = part[0]
+        second = part[1]
         if first == "type":
-            if command == "exit":
-                break
-            if first == "echo":
-                print(part[1])
+            
+            if second in commands:
+                print(f"{second} is a shell in builtin")
             # if first == "type":
             #     if part[1] in commands:
             #         print(f"{part[1]} is a shell builtin")
