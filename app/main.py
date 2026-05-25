@@ -6,9 +6,14 @@ def main():
     while(True):
         sys.stdout.write("$ ")
         command = input()
+        part = command.split(maxsplit = 1)
+        first = part[0]
         if command == "exit":
             break
-        print(f"{command}: command not found")
+        if command == "echo":
+            print(part[1])
+        else:
+            print(f"{command}: command not found")
     pass
 
 
