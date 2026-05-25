@@ -10,7 +10,7 @@ def main():
         first = part[0]
         if command == "exit":
             break
-        if command == "echo":
+        if first == "echo":
             print(part[1])
         else:
             print(f"{command}: command not found")
