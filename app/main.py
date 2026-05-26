@@ -17,6 +17,8 @@ def find_in_path(command_path):
         if os.path.isfile(fullpath) and os.access(fullpath, os.X_OK):
             return fullpath
     return None
+def handle_pwd(args):
+    return print(os.getcwd());
 
 def handle_type(cmd_arg, builtin_cmds):
     if cmd_arg in builtin_cmds:
@@ -35,6 +37,7 @@ def main():
         "exit": lambda args:sys.exit(0),
         "type": lambda args:handle_type(args,builtin_cmd.keys()) ,
         "echo": lambda args:print(args),
+        "pwd" : handle_pwd,
     }
     while True:
         print("$ ",end="")
