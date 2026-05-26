@@ -20,7 +20,12 @@ def find_in_path(command_path):
 def handle_pwd(args):
     return print(os.getcwd());
 
-def handle_type(cmd_arg, builtin_cmds):
+def handle_type(args_list, builtin_cmds):
+    if not args_list:
+        return
+    
+    cmd_arg = args_list[0]
+    
     if cmd_arg in builtin_cmds:
         print(f"{cmd_arg} is a shell builtin")
         return
@@ -55,7 +60,7 @@ def parse_argument(input_string):
 
     for char in input_string:
         if char == "'":
-            in_single_quote = True
+            in_single_quote = not in_single_quote
         elif char == " " and not in_single_quote:
             if current_token:
                 token.append("".join(current_token))
@@ -73,7 +78,7 @@ def parse_argument(input_string):
 def main():
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
-        "type": lambda args:handle_type(args,builtin_cmd.keys()) ,
+        "type": lambda args:handle_type(args_list,builtin_cmd.keys()) ,
         "echo": lambda args:print(args),
         "pwd" : handle_pwd,
         "cd"  : handle_cd,
