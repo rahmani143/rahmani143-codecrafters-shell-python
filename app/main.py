@@ -32,13 +32,17 @@ def handle_type(cmd_arg, builtin_cmds):
     
     print(f"{cmd_arg}: not found")
 
-def handle_cd(args):
-    path_cd = os.chdir(args)
-    if find_in_path(path_cd):
-        return 
-    else:
-        print(f"cd: {args}: No such File or directory")
-        return
+def handle_cd(arguments_string):
+    target = arguments_string.strip()
+
+    if not target or target == "~":
+        target = os.path.expanduser("~")
+    
+    if os.path.isdir(target):
+        try:
+            os.chdir(target)
+        except PermissionError:
+            print(f"cd: {target}: Permission denied")
 
 
 def main():
