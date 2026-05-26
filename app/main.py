@@ -46,6 +46,29 @@ def handle_cd(arguments_string):
     else:
         print(f"cd: {target}: No such file or directory")
 
+def parse_argument(input_string):
+    token = []
+    current_token = []
+    in_single_quote = False
+
+    input_string = input_string.strip()
+
+    for char in input_string:
+        if char == "'":
+            in_single_quote = True
+        elif char == " " and not in_single_quote:
+            if current_token:
+                token.append("".join(current_token))
+                current_token = []
+        else:
+            current_token.append(char)
+    
+    if current_token:
+        token.append("".join(current_token))
+    
+    return token
+            
+
 
 def main():
     builtin_cmd = {
@@ -57,11 +80,17 @@ def main():
     }
     while True:
         print("$ ",end="")
-        raw_input = input().strip()
+        raw_input = input()
         if not raw_input:
             continue
 
-        command, *args_list = raw_input.split()
+        tokens = parse_argument(raw_input)
+
+        if not tokens:
+            continue
+
+        command = token[0]
+        args_list = tokens[1:]
 
         if command in builtin_cmd:
             arguments_string = " ".join(args_list)
