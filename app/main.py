@@ -89,7 +89,7 @@ def main():
         if not tokens:
             continue
 
-        command = token[0]
+        command = tokens[0]
         args_list = tokens[1:]
 
         if command in builtin_cmd:
