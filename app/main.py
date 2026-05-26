@@ -43,6 +43,8 @@ def handle_cd(arguments_string):
             os.chdir(target)
         except PermissionError:
             print(f"cd: {target}: Permission denied")
+    else:
+        print(f"cd: {target}: No such file or directory")
 
 
 def main():
