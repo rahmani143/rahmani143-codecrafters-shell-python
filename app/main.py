@@ -32,12 +32,22 @@ def handle_type(cmd_arg, builtin_cmds):
     
     print(f"{cmd_arg}: not found")
 
+def handle_cd(args):
+    path_cd = os.chdir(args)
+    if find_in_path(path_cd):
+        return 
+    else:
+        print(f"cd: {args}: No such File or directory")
+        return
+
+
 def main():
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
         "type": lambda args:handle_type(args,builtin_cmd.keys()) ,
         "echo": lambda args:print(args),
         "pwd" : handle_pwd,
+        "cd"  : handle_cd,
     }
     while True:
         print("$ ",end="")
