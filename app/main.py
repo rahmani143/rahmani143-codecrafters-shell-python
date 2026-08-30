@@ -58,14 +58,18 @@ def parse_argument(input_string):
     in_single_quote = False
 
     input_string = input_string.strip()
+    in_double_quote = False
 
     for char in input_string:
-        if char == "'":
+        if char == "'" and not in_double_quote:
             in_single_quote = not in_single_quote
-        elif char == " " and not in_single_quote:
+        elif char == '"' and not in_single_quote:
+            in_double_quote = not in_double_quote
+        elif char == " " and not in_single_quote and not in_double_quote:
             if current_token:
                 token.append("".join(current_token))
                 current_token = []
+        
         else:
             current_token.append(char)
     
@@ -79,10 +83,6 @@ def echoreturn(args):
     return 0
 
 def main():
-    print("$ ",end="")
-    raw_input = input()
-    token = parse_argument(raw_input)
-    print(token)
     
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
