@@ -76,9 +76,12 @@ def parse_argument(input_string):
             
 def echoreturn(args):
     token = []
-    for word in 
+    return 0
 
 def main():
+    token = parse_argument(raw_input)
+    print(token)
+    
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
         "type": lambda args:handle_type(args_list,builtin_cmd.keys()) ,
