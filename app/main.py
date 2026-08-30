@@ -77,17 +77,13 @@ def parse_argument(input_string):
         token.append("".join(current_token))
     
     return token
-            
-def echoreturn(args):
-    token = []
-    return 0
 
 def main():
     
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
         "type": lambda args:handle_type(args_list,builtin_cmd.keys()) ,
-        "echo": lambda args:echoreturn(args_list),
+        "echo": lambda args:parse_argument(" ".join(args_list)),
         "pwd" : handle_pwd,
         "cd"  : handle_cd,
     }
