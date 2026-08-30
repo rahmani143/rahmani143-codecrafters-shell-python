@@ -79,6 +79,8 @@ def echoreturn(args):
     return 0
 
 def main():
+    print("$ ",end="")
+    raw_input = input()
     token = parse_argument(raw_input)
     print(token)
     
