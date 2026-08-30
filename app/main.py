@@ -17,6 +17,7 @@ def find_in_path(command_path):
         if os.path.isfile(fullpath) and os.access(fullpath, os.X_OK):
             return fullpath
     return None
+
 def handle_pwd(args):
     return print(os.getcwd());
 
@@ -73,13 +74,15 @@ def parse_argument(input_string):
     
     return token
             
-
+def echoreturn(args):
+    token = []
+    for word in 
 
 def main():
     builtin_cmd = {
         "exit": lambda args:sys.exit(0),
         "type": lambda args:handle_type(args_list,builtin_cmd.keys()) ,
-        "echo": lambda args:print(args),
+        "echo": lambda args:echoreturn(args_list),
         "pwd" : handle_pwd,
         "cd"  : handle_cd,
     }
@@ -90,6 +93,7 @@ def main():
             continue
 
         tokens = parse_argument(raw_input)
+        print(tokens)
 
         if not tokens:
             continue
