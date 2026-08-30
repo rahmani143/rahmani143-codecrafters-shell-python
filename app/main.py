@@ -98,7 +98,7 @@ def main():
             continue
 
         tokens = parse_argument(raw_input)
-        print(tokens)
+        # print(tokens)
 
         if not tokens:
             continue
