@@ -59,20 +59,34 @@ def parse_argument(input_string):
 
     input_string = input_string.strip()
     in_double_quote = False
+    in_escape = False
 
     for char in input_string:
+        if in_escape:
+            current_token.append(char)
+            in_escape = False
+            continue
+        
+        if char == "\\" and not in_single_quote:
+            in_escape = True
+            continue
+        
         if char == "'" and not in_double_quote:
             in_single_quote = not in_single_quote
+            continue
+        
         elif char == '"' and not in_single_quote:
             in_double_quote = not in_double_quote
+            continue
+            
         elif char == " " and not in_single_quote and not in_double_quote:
             if current_token:
                 token.append("".join(current_token))
                 current_token = []
+            continue
         
-        else:
-            current_token.append(char)
-    
+        current_token.append(char)
+            
     if current_token:
         token.append("".join(current_token))
     
